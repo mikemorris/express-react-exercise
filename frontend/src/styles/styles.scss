@@ -1,0 +1,107 @@
+@import 'colors';
+@import 'spacing';
+@import 'fonts';
+html,
+body {
+  height: 100%;
+  margin: 0;
+  color: $gray-70;
+  background: $white;
+}
+
+body,
+input,
+button {
+  font-family: 'splice-sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+label {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: $spacing-xs;
+}
+
+input {
+  border: 1px solid $gray-30;
+  border-radius: 4px;
+  padding: $spacing-sm;
+}
+
+button {
+  background: $blue;
+  color: $white;
+  font-weight: bold;
+  padding: $spacing-sm;
+  border-radius: 40px;
+  margin-top: $spacing-md;
+  border: none;
+  &:disabled,
+  &[disabled] {
+    background: $gray-10;
+    color: $gray-60;
+  }
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 28px;
+  color: $gray-90;
+}
+
+p {
+  font-size: 19px;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  &--cents {
+    &:before {
+      content: '\00A2';
+    }
+  }
+  &--visa-card {
+    width: 34px;
+    height: 21px;
+    background: url('/assets/images/icons/visa-icon.svg');
+  }
+  &--facebook {
+    width: 24px;
+    height: 24px;
+    background: url('/assets/images/icons/facebook-icon.svg');
+  }
+  &--twitter {
+    width: 24px;
+    height: 24px;
+    background: url('/assets/images/icons/twitter-icon.svg');
+  }
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $gray-30;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: $gray-30;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: $gray-30;
+}
