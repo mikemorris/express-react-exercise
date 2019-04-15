@@ -95,11 +95,22 @@ const MyEnhancedForm = withFormik({
     return errors;
   },
 
-  handleSubmit: (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 1000);
+  handleSubmit: async (values, { setSubmitting }) => {
+    const res = await fetch("http://localhost:3001", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+
+    setSubmitting(false);
+
+    if (res.status === 200) {
+      // TODO: Set success state
+    } else {
+      // Handle error
+    }
   },
 
   displayName: 'BasicForm', // helps with React DevTools

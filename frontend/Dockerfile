@@ -1,14 +1,17 @@
 FROM node:10-alpine
 
-RUN mkdir -p /usr/src/app
+ENV NODE_ENV production
+
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
-ENV NODE_ENV production
+RUN npm install && \
+  npm run build
 
-RUN npm install
+FROM nginx
 
-ENV PORT 3000
-EXPOSE 3000
+COPY --from=0 /usr/src/app/build /usr/share/nginx/html
 
-CMD ["npm", "start"]
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
