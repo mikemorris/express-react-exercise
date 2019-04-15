@@ -1,5 +1,5 @@
 import React from 'react';
-import MyEnhancedForm from "./Form";
+import MyEnhancedForm from "./components/Form/Form";
 import './styles/styles.scss';
 
 const App = () => (

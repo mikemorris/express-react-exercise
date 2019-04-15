@@ -1,4 +1,5 @@
 import React from 'react';
+import TextInput from "./TextInput";
 import { withFormik } from 'formik';
 
 const MyForm = ({
@@ -13,39 +14,57 @@ const MyForm = ({
   dirty,
 }) => (
   <form onSubmit={handleSubmit}>
-    <label htmlFor="email" style={{ display: 'block' }}>
-      Email
+    <TextInput
+      id="first-name"
+      label="First Name"
+      placeholder="Margaret"
+      values={values}
+      touched={touched}
+      errors={errors}
+      handleChange={handleChange}
+      handleBlur={handleBlur}
+    />
+
+    <TextInput
+      id="last-name"
+      label="Last Name"
+      placeholder="Hamilton"
+      values={values}
+      touched={touched}
+      errors={errors}
+      handleChange={handleChange}
+      handleBlur={handleBlur}
+    />
+
+    <p>
+      The following information needs to be real for your payment to be processed.
+    </p>
+
+    <TextInput
+      id="email"
+      label="Email"
+      placeholder="margaret@nasa.gov"
+      values={values}
+      touched={touched}
+      errors={errors}
+      handleChange={handleChange}
+      handleBlur={handleBlur}
+    />
+    
+    <label htmlFor="payment" style={{ display: 'block' }}>
+      Saved Payment
     </label>
     <input
-      id="email"
-      placeholder="Enter your email"
+      id="payment"
       type="text"
-      value={values.email}
+      value={values["payment"]}
+      disabled
       onChange={handleChange}
       onBlur={handleBlur}
-      className={
-        errors.email && touched.email ? (
-          'text-input error'
-        ) : (
-          'text-input'
-        )
-      }
     />
-    {errors.email &&
-    touched.email && (
-      <div className="input-feedback">{errors.email}</div>
-    )}
 
-    <button
-      type="button"
-      className="outline"
-      onClick={handleReset}
-      disabled={!dirty || isSubmitting}
-    >
-      Reset
-    </button>
     <button type="submit" disabled={isSubmitting}>
-      Submit
+      See who paid 99¢
     </button>
   </form>
 );
