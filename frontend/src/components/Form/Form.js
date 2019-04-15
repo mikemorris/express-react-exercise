@@ -54,14 +54,22 @@ const MyForm = ({
     <label htmlFor="payment" style={{ display: 'block' }}>
       Saved Payment
     </label>
-    <input
-      id="payment"
-      type="text"
-      value={values["payment"]}
-      disabled
-      onChange={handleChange}
-      onBlur={handleBlur}
-    />
+    <span
+      className="icon--visa-card"
+      style={{
+        "padding-left": "34px"
+      }}
+    >
+      <input
+        id="payment"
+        placeholder="**** **** **** 4242"
+        type="text"
+        value={values["payment"]}
+        disabled
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+    </span>
 
     <button type="submit" disabled={isSubmitting}>
       See who paid 99¢
