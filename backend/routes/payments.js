@@ -3,6 +3,17 @@ const db = require('../db')
 
 const router = new Router();
 
+router.get('/', async (req, res) => {
+  try {
+    const pg_res = await db.query('SELECT * FROM payments ORDER BY created_at DESC');
+    res.status(200).send(pg_res.rows);
+  } catch(err) {
+    // TODO: use proper logger with log level error
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
+
 router.post('/', async (req, res) => {
   // TODO: validate POST data, use proper logger with log level info
   console.log(req.body);
