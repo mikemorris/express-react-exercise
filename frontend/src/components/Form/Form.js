@@ -15,7 +15,7 @@ const MyForm = ({
 }) => (
   <form onSubmit={handleSubmit}>
     <TextInput
-      id="first-name"
+      id="first_name"
       label="First Name"
       placeholder="Margaret"
       values={values}
@@ -26,7 +26,7 @@ const MyForm = ({
     />
 
     <TextInput
-      id="last-name"
+      id="last_name"
       label="Last Name"
       placeholder="Hamilton"
       values={values}
@@ -96,7 +96,7 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting }) => {
-    const res = await fetch("http://localhost:3001", {
+    const res = await fetch("http://localhost:3001/payments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
