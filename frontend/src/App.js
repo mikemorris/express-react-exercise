@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import Members from "./components/Members";
 import MyForm from "./components/Form/Form";
 import './styles/styles.scss';
 
 class App extends Component {
   state = {
     submitted: false,
-    payments: []
   }
 
   onSubmit = async (values, { setSubmitting }) => {
@@ -18,7 +18,12 @@ class App extends Component {
         body: JSON.stringify(values),
       });
 
-      this.setState({ submitted: true });
+      const json = await res.json();
+
+      this.setState({
+        submitted: true,
+        email: json.email,
+      });
     } catch(err) {
       // TODO: Handle error
     }
@@ -35,7 +40,11 @@ class App extends Component {
           <p>Aren't you curious? Please don't tell.</p>
         </header>
 
-        { !this.state.submitted && (
+        { this.state.submitted ? (
+            <Members
+              email={this.state.email}
+            />
+          ) : (
             <MyForm 
               onSubmit={this.onSubmit}
             />
