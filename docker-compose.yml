@@ -6,6 +6,8 @@ services:
       - "3000:80"
     depends_on:
       - backend
+    volumes:
+      - ./frontend/build:/usr/share/nginx/html
   backend:
     build: ./backend
     ports:
@@ -14,6 +16,8 @@ services:
       - postgres
     environment:
       - DATABASE_URL=postgres://postgres@postgres:5432/postgres
+    volumes:
+      - ./backend:/usr/src/app
   postgres:
     image: postgres
     ports:
