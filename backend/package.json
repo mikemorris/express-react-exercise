@@ -15,7 +15,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "db-migrate up && node index.js",
+    "start": "./node_modules/.bin/db-migrate up && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
